@@ -2,6 +2,13 @@ const axios = require("axios");
 const res = require("express/lib/response");
 
 const apiController = {
+  base_url: "https://api.openweathermap.org/data/2.5/weather",
+  params: {
+    units: "metric",
+    lang: "fr",
+    appid: process.env.API_KEY
+  },
+
   async getWeather(req, res) {
       const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?zip=74000,fr&units=metric&lang=fr&appid=${process.env.API_KEY}`)
 
@@ -15,14 +22,17 @@ const apiController = {
 
   async getWeatherByPlace(req, res) {
     const {place} = req.body;
-    let url = "";
-    let response = {};
+    let params = {};
     if (/^[a-zA-Z]+$/.test(place)) {
-      url = `https://api.openweathermap.org/data/2.5/weather?q=${place}&units=metric&lang=fr&appid=${process.env.API_KEY}`
+      params = {
+        q: place,
+      }
     } else if (/^[0-9]+$/.test(place)) {
-      url = `https://api.openweathermap.org/data/2.5/weather?zip=${place},fr&units=metric&lang=fr&appid=${process.env.API_KEY}`
+      params = {
+        zip: place +",fr",
+      }
     }
-    response = await axios.get(url)
+    const response = await axios.get(apiController.base_url, {params: params})
     res.render("index", {weather: response.data})
   }
 }
