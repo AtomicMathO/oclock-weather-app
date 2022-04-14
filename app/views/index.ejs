@@ -16,19 +16,28 @@
           </div>
         </div>
     
-        <div class="content">
-          <p>
-            <strong>Température</strong> <span class="media-right"><%= weather.main.temp %> pour <%= weather.main.temp %> ressentis</span> 
+        <div class="content columns">
+          <p class="column">
+            <strong>Température</strong> 
             <br>
-            <strong>Pression atmosphérique</strong> <span class="media-right"><%= weather.main.pressure %> hPa</span>
+            <strong>Pression atmosphérique</strong>
             <br>
-            <strong>Taux d'humidité</strong> <span class="media-right"><%= weather.main.humidity %>%</span>
+            <strong>Taux d'humidité</strong>
             <br>
-            <strong>Vitesse du vent</strong> <span class="media-right"><%= weather.wind.speed %> m/s</span>
+            <strong>Vitesse du vent</strong>
+          </p>
+          <p class="column is-two-thirds">
+            <span class="media-right"><%= weather.main.temp %>˚C / <%= weather.main.feels_like %>˚C ressenti</span>
+            <br>
+            <span class="media-right"><%= weather.main.pressure %> hPa</span>
+            <br>
+            <span class="media-right"><%= weather.main.humidity %>%</span>
+            <br>
+            <span class="media-right"><%= weather.wind.speed %> m/s</span>
           </p>
         </div>
           <br>
-          <time datetime="<%= new Date() %>"><%= new Date()%></time>
+          <time class="has-text-centered" datetime="<%= new Date() %>"><%= new Date()%></time>
         </div>
       </div>
     </div>
