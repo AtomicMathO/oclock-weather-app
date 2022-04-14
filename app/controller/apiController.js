@@ -22,17 +22,12 @@ const apiController = {
 
   async getWeatherByPlace(req, res) {
     const {place} = req.body;
-    let params = {};
     if (/^[a-zA-Z]+$/.test(place)) {
-      params = {
-        q: place,
-      }
+      apiController.params["q"] = place
     } else if (/^[0-9]+$/.test(place)) {
-      params = {
-        zip: place +",fr",
-      }
+      apiController.params["zip"] = place +",fr"
     }
-    const response = await axios.get(apiController.base_url, {params: params})
+    const response = await axios.get(apiController.base_url, {params: apiController.params})
     res.render("index", {weather: response.data})
   }
 }
