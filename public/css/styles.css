@@ -1,0 +1,18 @@
+.title {
+  margin-top: 25px;
+  margin-bottom: 100px;
+}
+
+.navbar-start {
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+.navbar-item {
+  display: inline-block;
+}
+
+.choose-button {
+  margin: 25px auto;
+}

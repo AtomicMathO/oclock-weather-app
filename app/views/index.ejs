@@ -1,0 +1,39 @@
+<%- include('./partials/header') -%>
+
+<div class="columns is-centered">
+  <div class="column is-half">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="http://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4"><%= weather.name %></p>
+            <p class="subtitle is-6"><%= weather.weather[0].description %></p>
+          </div>
+        </div>
+    
+        <div class="content">
+          <p>
+            <strong>Température</strong> <span class="media-right"><%= weather.main.temp %> pour <%= weather.main.temp %> ressentis</span> 
+            <br>
+            <strong>Pression atmosphérique</strong> <span class="media-right"><%= weather.main.pressure %> hPa</span>
+            <br>
+            <strong>Taux d'humidité</strong> <span class="media-right"><%= weather.main.humidity %>%</span>
+            <br>
+            <strong>Vitesse du vent</strong> <span class="media-right"><%= weather.wind.speed %> m/s</span>
+          </p>
+        </div>
+          <br>
+          <time datetime="<%= new Date() %>"><%= new Date()%></time>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
